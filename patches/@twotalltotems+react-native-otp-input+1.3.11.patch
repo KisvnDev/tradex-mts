@@ -1,0 +1,15 @@
+diff --git a/node_modules/@twotalltotems/react-native-otp-input/dist/index.js b/node_modules/@twotalltotems/react-native-otp-input/dist/index.js
+index 71580b8..ef86065 100644
+--- a/node_modules/@twotalltotems/react-native-otp-input/dist/index.js
++++ b/node_modules/@twotalltotems/react-native-otp-input/dist/index.js
+@@ -155,7 +155,9 @@ export default class OTPInputView extends Component {
+     }
+     componentDidMount() {
+         this.copyCodeFromClipBoardOnAndroid();
+-        this.bringUpKeyBoardIfNeeded();
++        setTimeout(() => {
++            this.bringUpKeyBoardIfNeeded();
++        }, 100);
+         this.keyboardDidHideListener = Keyboard.addListener('keyboardDidHide', this.handleKeyboardDidHide);
+     }
+     componentWillUnmount() {

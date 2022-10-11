@@ -1,0 +1,22 @@
+import {
+  DERIVATIVES_ACCOUNT_QUERY_ACCOUNT_EQUITY,
+  DERIVATIVES_ACCOUNT_QUERY_ACCOUNT_SUMMARY,
+} from 'redux-sagas/actions';
+import {
+  DERIVATIVES_ACCOUNT_QUERY_ACCOUNT_EQUITY_SUCCESS,
+  DERIVATIVES_ACCOUNT_QUERY_ACCOUNT_SUMMARY_SUCCESS,
+} from './reducers';
+
+export const queryAccountSummary = () => ({
+  type: DERIVATIVES_ACCOUNT_QUERY_ACCOUNT_SUMMARY,
+  response: {
+    success: DERIVATIVES_ACCOUNT_QUERY_ACCOUNT_SUMMARY_SUCCESS,
+  },
+});
+
+export const queryAccountEquity = () => ({
+  type: DERIVATIVES_ACCOUNT_QUERY_ACCOUNT_EQUITY,
+  response: {
+    success: DERIVATIVES_ACCOUNT_QUERY_ACCOUNT_EQUITY_SUCCESS,
+  },
+});

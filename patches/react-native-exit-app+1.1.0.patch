@@ -1,0 +1,12 @@
+diff --git a/node_modules/react-native-exit-app/android/src/main/java/com/github/wumke/RNExitApp/RNExitAppModule.java b/node_modules/react-native-exit-app/android/src/main/java/com/github/wumke/RNExitApp/RNExitAppModule.java
+index c6d6299..703910a 100644
+--- a/node_modules/react-native-exit-app/android/src/main/java/com/github/wumke/RNExitApp/RNExitAppModule.java
++++ b/node_modules/react-native-exit-app/android/src/main/java/com/github/wumke/RNExitApp/RNExitAppModule.java
+@@ -34,6 +34,7 @@ public class RNExitAppModule extends ReactContextBaseJavaModule {
+ 
+     @ReactMethod
+     public void exitApp() {
++        this.reactContext.getCurrentActivity().finish();
+         android.os.Process.killProcess(android.os.Process.myPid());
+     }
+ }

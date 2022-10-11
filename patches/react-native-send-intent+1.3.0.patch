@@ -1,0 +1,60 @@
+diff --git a/node_modules/react-native-send-intent/android/src/main/java/com/burnweb/rnsendintent/RNSendIntentModule.java b/node_modules/react-native-send-intent/android/src/main/java/com/burnweb/rnsendintent/RNSendIntentModule.java
+index fcbbcad..c6ad562 100644
+--- a/node_modules/react-native-send-intent/android/src/main/java/com/burnweb/rnsendintent/RNSendIntentModule.java
++++ b/node_modules/react-native-send-intent/android/src/main/java/com/burnweb/rnsendintent/RNSendIntentModule.java
+@@ -486,6 +486,29 @@ public class RNSendIntentModule extends ReactContextBaseJavaModule {
+         promise.resolve(true);
+     }
+ 
++    @ReactMethod
++    public void openAppOnTop(String packageName, ReadableMap extras, final Promise promise) {
++        Intent sendIntent = this.reactContext.getPackageManager().getLaunchIntentForPackage(packageName);
++        if (sendIntent == null) {
++            promise.resolve(false);
++            return;
++        }
++
++        if (!parseExtras(extras, sendIntent)) {
++            promise.resolve(false);
++            return;
++        }
++
++        // sendIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
++        // sendIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | FLAG_ACTIVITY_NEW_TASK);
++        sendIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK); 
++        // sendIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
++
++        // sendIntent.addCategory(Intent.CATEGORY_LAUNCHER);
++        this.reactContext.startActivity(sendIntent);
++        promise.resolve(true);
++    }
++
+     @ReactMethod
+     public void openCalendar() {
+       ComponentName cn = new ComponentName("com.android.calendar", "com.android.calendar.LaunchActivity");
+diff --git a/node_modules/react-native-send-intent/index.d.ts b/node_modules/react-native-send-intent/index.d.ts
+index 21b65e5..5b5cf50 100644
+--- a/node_modules/react-native-send-intent/index.d.ts
++++ b/node_modules/react-native-send-intent/index.d.ts
+@@ -64,6 +64,7 @@ declare namespace SendIntentAndroid {
+   const getPhoneNumber: () => Promise<string>
+   const gotoHomeScreen: () => void
+   const openApp: (packageName: string, extras: { [index: string]: string }) => Promise<boolean>
++  const openAppOnTop: (packageName: string, extras: { [index: string]: string }) => Promise<boolean>
+   const openAppWithData: (packageName: string, dataUri: string, mimeType?: string, extras?: { [index: string]: string }) => Promise<boolean>
+   const openChromeIntent: (dataUri: string) => Promise<boolean>
+   const openDownloadManager: () => void
+diff --git a/node_modules/react-native-send-intent/index.js b/node_modules/react-native-send-intent/index.js
+index 4032064..c174096 100644
+--- a/node_modules/react-native-send-intent/index.js
++++ b/node_modules/react-native-send-intent/index.js
+@@ -83,6 +83,9 @@ var SendIntentAndroid = {
+     openApp(packageName, extras) {
+         return RNSendIntentAndroid.openApp(packageName, extras || {});
+     },
++    openAppOnTop(packageName, extras) {
++        return RNSendIntentAndroid.openAppOnTop(packageName, extras || {});
++    },
+     /** Creates an ACTION_VIEW Intent for the given package with the given data, optional mimetype and extras.
+      *  The extras are an object containing String, or other objects of the following format:
+      * { type: "int", value: 4 }

@@ -1,0 +1,64 @@
+import { IObject } from 'interfaces/common';
+import {
+  DERIVATIVES_TRANSFER_QUERY_TRANSFER_IM_BANK,
+  DERIVATIVES_TRANSFER_QUERY_TRANSFER_IM_FEE,
+  DERIVATIVES_TRANSFER_QUERY_WITHDRAW_IM_INFO,
+  DERIVATIVES_TRANSFER_WITHDRAW_IM_REQUEST,
+} from 'redux-sagas/actions';
+import {
+  WITHDRAW_IM_QUERY_DERIVATIVES_WITHDRAW_INFO_FAILED,
+  WITHDRAW_IM_QUERY_DERIVATIVES_WITHDRAW_INFO_SUCCESS,
+  WITHDRAW_IM_QUERY_SOURCE_BANK_FAILED,
+  WITHDRAW_IM_QUERY_SOURCE_BANK_SUCCESS,
+  WITHDRAW_IM_QUERY_TARGET_BANK_FAILED,
+  WITHDRAW_IM_QUERY_TARGET_BANK_SUCCESS,
+  WITHDRAW_IM_REQUEST_FAILED,
+  WITHDRAW_IM_REQUEST_SUCCESS,
+  WITHDRAW_IM_QUERY_DERIVATIVES_FEE_SUCCESS,
+  WITHDRAW_IM_QUERY_DERIVATIVES_FEE_FAILED,
+} from './reducers';
+
+export const queryDerivativesWithdrawIMInfo = () => ({
+  type: DERIVATIVES_TRANSFER_QUERY_WITHDRAW_IM_INFO,
+  response: {
+    success: WITHDRAW_IM_QUERY_DERIVATIVES_WITHDRAW_INFO_SUCCESS,
+    failure: WITHDRAW_IM_QUERY_DERIVATIVES_WITHDRAW_INFO_FAILED,
+  },
+});
+
+export const queryWithdrawIMSourceBank = (payload: IObject) => ({
+  type: DERIVATIVES_TRANSFER_QUERY_TRANSFER_IM_BANK,
+  response: {
+    success: WITHDRAW_IM_QUERY_SOURCE_BANK_SUCCESS,
+    failure: WITHDRAW_IM_QUERY_SOURCE_BANK_FAILED,
+  },
+  payload,
+});
+
+export const queryWithdrawIMTargetBank = (payload: IObject) => ({
+  type: DERIVATIVES_TRANSFER_QUERY_TRANSFER_IM_BANK,
+  response: {
+    success: WITHDRAW_IM_QUERY_TARGET_BANK_SUCCESS,
+    failure: WITHDRAW_IM_QUERY_TARGET_BANK_FAILED,
+  },
+  payload,
+});
+
+export const queryDerivativesWithdrawIMFee = (payload: IObject) => ({
+  type: DERIVATIVES_TRANSFER_QUERY_TRANSFER_IM_FEE,
+  response: {
+    success: WITHDRAW_IM_QUERY_DERIVATIVES_FEE_SUCCESS,
+    failure: WITHDRAW_IM_QUERY_DERIVATIVES_FEE_FAILED,
+  },
+  payload,
+});
+
+export const requestWithdrawIM = (payload: IObject) => ({
+  type: DERIVATIVES_TRANSFER_WITHDRAW_IM_REQUEST,
+  response: {
+    success: WITHDRAW_IM_REQUEST_SUCCESS,
+    failure: WITHDRAW_IM_REQUEST_FAILED,
+  },
+  payload,
+  showLoading: true,
+});

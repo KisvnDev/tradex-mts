@@ -1,0 +1,14 @@
+diff --git a/node_modules/js-search/package.json b/node_modules/js-search/package.json
+index e0775d1..06b0da1 100644
+--- a/node_modules/js-search/package.json
++++ b/node_modules/js-search/package.json
+@@ -8,7 +8,8 @@
+     ".": {
+       "require": "./dist/umd/js-search.js",
+       "import": "./dist/esm/js-search.js"
+-    }
++    },
++    "./package.json": "./package.json"
+   },
+   "files": [
+     "dist",

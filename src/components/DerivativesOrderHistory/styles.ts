@@ -1,0 +1,66 @@
+import { StyleSheet } from 'react-native';
+import { Colors } from 'styles';
+
+export default StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+  inputSection: {
+    height: 60,
+    borderBottomWidth: 3,
+    borderColor: Colors.LIGHTER_GREY,
+  },
+  inputNewKisCore: {
+    height: 120,
+  },
+  itemSection: {
+    height: 50,
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    paddingLeft: 10,
+    paddingRight: 10,
+    paddingTop: 2,
+    paddingBottom: 2,
+  },
+  item: {
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    height: 70,
+  },
+  labelContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    paddingTop: 10,
+  },
+  label: {
+    fontSize: 14,
+    color: Colors.LIGHT_GREY,
+  },
+  dataContainer: {
+    flex: 4,
+  },
+  pickerContainer: {
+    flex: 1,
+  },
+  data: {
+    fontSize: 11,
+  },
+  toDate: {
+    marginLeft: 8,
+  },
+  itemSectionNewKis: {
+    paddingLeft: 24,
+    paddingRight: 24,
+  },
+  boldText: {
+    fontWeight: '700',
+  },
+  labelContainerKis: {
+    flex: 0,
+    marginRight: 24,
+  },
+});

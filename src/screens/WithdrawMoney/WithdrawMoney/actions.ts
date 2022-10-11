@@ -1,0 +1,61 @@
+import { IObject } from 'interfaces/common';
+import {
+  WITHDRAW_MONEY_QUERY_BANK_ACCOUNTS,
+  WITHDRAW_MONEY_REQUEST,
+  DERIVATIVES_TRANSFER_QUERY_WITHDRAW_INFO,
+  ACCOUNT_QUERY_EQUITY_ACCOUNT_BALANCE,
+  WITHDRAW_MONEY_QUERY_BANK_INFO
+} from 'redux-sagas/actions';
+import {
+  WITHDRAW_MONEY_REQUEST_SUCCESS,
+  WITHDRAW_MONEY_REQUEST_FAILED,
+  WITHDRAW_MONEY_QUERY_BANK_ACCOUNT_SUCCESS,
+  WITHDRAW_MONEY_QUERY_BANK_ACCOUNT_FAILED,
+  WITHDRAW_MONEY_QUERY_DERIVATIVES_WITHDRAW_INFO_SUCCESS,
+  WITHDRAW_MONEY_QUERY_DERIVATIVES_WITHDRAW_INFO_FAILED,
+  WITHDRAW_MONEY_QUERY_ACCOUNT_BALANCE_SUCCESS,
+  WITHDRAW_MONEY_QUERY_BANK_INFO_SUCCESS,
+  WITHDRAW_MONEY_QUERY_BANK_INFO_FAILED,
+} from './reducers';
+
+export const queryWithdrawBankAccounts = (payload?: IObject) => ({
+  type: WITHDRAW_MONEY_QUERY_BANK_ACCOUNTS,
+  response: {
+    success: WITHDRAW_MONEY_QUERY_BANK_ACCOUNT_SUCCESS,
+    failure: WITHDRAW_MONEY_QUERY_BANK_ACCOUNT_FAILED,
+  },
+  payload: payload,
+});
+
+export const queryBankInfo = () => ({
+  type: WITHDRAW_MONEY_QUERY_BANK_INFO,
+  response: {
+    success: WITHDRAW_MONEY_QUERY_BANK_INFO_SUCCESS,
+    failure: WITHDRAW_MONEY_QUERY_BANK_INFO_FAILED,
+  },
+});
+
+export const requestWithdrawMoney = (payload: IObject) => ({
+  type: WITHDRAW_MONEY_REQUEST,
+  response: {
+    success: WITHDRAW_MONEY_REQUEST_SUCCESS,
+    failure: WITHDRAW_MONEY_REQUEST_FAILED,
+  },
+  payload,
+  showLoading: true,
+});
+
+export const queryDerivativesWithdrawInfo = () => ({
+  type: DERIVATIVES_TRANSFER_QUERY_WITHDRAW_INFO,
+  response: {
+    success: WITHDRAW_MONEY_QUERY_DERIVATIVES_WITHDRAW_INFO_SUCCESS,
+    failure: WITHDRAW_MONEY_QUERY_DERIVATIVES_WITHDRAW_INFO_FAILED,
+  },
+});
+
+export const queryAccountBalance = () => ({
+  type: ACCOUNT_QUERY_EQUITY_ACCOUNT_BALANCE,
+  response: {
+    success: WITHDRAW_MONEY_QUERY_ACCOUNT_BALANCE_SUCCESS,
+  },
+});
